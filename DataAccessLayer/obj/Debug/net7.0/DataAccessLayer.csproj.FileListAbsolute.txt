@@ -1,0 +1,14 @@
+D:\OnlineBookStoreApi\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.deps.json
+D:\OnlineBookStoreApi\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.runtimeconfig.json
+D:\OnlineBookStoreApi\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.dll
+D:\OnlineBookStoreApi\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.pdb
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.csproj.AssemblyReference.cache
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.AssemblyInfoInputs.cache
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.AssemblyInfo.cs
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.dll
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\refint\DataAccessLayer.dll
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.pdb
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.genruntimeconfig.cache
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\ref\DataAccessLayer.dll
