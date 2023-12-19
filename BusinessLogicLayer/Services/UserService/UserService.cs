@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DataAccessLayer.IRepository;
+using System.Net;
 
 namespace BusinessLogicLayer.Services.UserService
 {
@@ -52,6 +53,23 @@ namespace BusinessLogicLayer.Services.UserService
         public async Task DeleteUserAsync(int userId)
         {
             await _userRepository.DeleteAsync(userId);
+        }
+
+        // Validation
+        public async Task<bool> IsPhoneNumberUniqueAsync( string phoneNumber )
+        {
+            return !( await _userRepository.GetAllAsync() ).Any( u => u.UserPhoneNumber == phoneNumber );
+        }
+
+        public async Task<bool> IsAddressUniqueAsync( string address )
+        {
+            return !( await _userRepository.GetAllAsync() ).Any( u => u.UserAddress == address );
+        }
+
+        public async Task<bool> IsEmailUniqueAsync(string email)
+        {
+            
+            return !(await _userRepository.GetAllAsync()).Any(u => u.UserEmail == email);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace DataAccessLayer.Models
       
         public int CartId { get; set; }
         public int TotalBooks { get; set; }
-        public int TotalPrice { get; set; }
+      
         public DateTime OrderDate { get; set; }
         public bool PaymentStatus { get; set; }
         public int Payment { get; set; }

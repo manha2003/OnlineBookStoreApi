@@ -19,7 +19,8 @@ namespace BusinessLogicLayer.Mapping
             CreateMap<Order, OrderDTO>();
 
             CreateMap<Book, BookDTO>()
-                .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.Authors));
+                .ReverseMap();
+
 
             CreateMap<Author, AuthorDTO>();
         }

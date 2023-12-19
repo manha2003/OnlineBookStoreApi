@@ -15,5 +15,8 @@ namespace BusinessLogicLayer.Services.UserService
         Task AddUserAsync(UserDTO userDTO);
         Task UpdateUserAsync(UserDTO userDTO);
         Task DeleteUserAsync(int userId);
+        Task<bool> IsPhoneNumberUniqueAsync(string phoneNumber);
+        Task<bool> IsAddressUniqueAsync(string address);
+        Task<bool> IsEmailUniqueAsync(string email);
     }
 }
