@@ -14,8 +14,9 @@ namespace DataAccessLayer.Models
         public DateTime UserDob { get; set; }
         public string UserAddress { get; set; }
         public string UserPhoneNumber { get; set; }
+        public float? UserBalance { get; set; }
 
         public Cart? Cart { get; set; }
-        public Order? Order { get; set; }
+      
     }
 }

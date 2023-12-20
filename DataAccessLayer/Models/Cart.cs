@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Models
 {
     public class Cart
-    {
+    {   
         public int CartId { get; set; }
+
         public int UserId { get; set; }
         public int BookId { get; set; }
         public int TotalBooks { get; set; }
@@ -17,7 +18,7 @@ namespace DataAccessLayer.Models
 
         // Navigation properties
         public User User { get; set; }
-        public Order? Order { get; set; }
-        public ICollection<Book?> Books { get; set; }
+        
+        public List<Book> Books { get; set; }
     }
 }

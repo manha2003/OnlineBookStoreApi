@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class New : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,6 +26,24 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AuthorBook",
+                columns: table => new
+                {
+                    AuthorsAuthorId = table.Column<int>(type: "int", nullable: false),
+                    BooksBookId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuthorBook", x => new { x.AuthorsAuthorId, x.BooksBookId });
+                    table.ForeignKey(
+                        name: "FK_AuthorBook_Authors_AuthorsAuthorId",
+                        column: x => x.AuthorsAuthorId,
+                        principalTable: "Authors",
+                        principalColumn: "AuthorId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Books",
                 columns: table => new
                 {
@@ -36,53 +54,12 @@ namespace DataAccessLayer.Migrations
                     AuthorId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
-                    Genre = table.Column<int>(type: "int", nullable: false)
+                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                   
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.BookId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BookAuthor",
-                columns: table => new
-                {
-                    AuthorsAuthorId = table.Column<int>(type: "int", nullable: false),
-                    BooksBookId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BookAuthor", x => new { x.AuthorsAuthorId, x.BooksBookId });
-                    table.ForeignKey(
-                        name: "FK_BookAuthor_Authors_AuthorsAuthorId",
-                        column: x => x.AuthorsAuthorId,
-                        principalTable: "Authors",
-                        principalColumn: "AuthorId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BookAuthor_Books_BooksBookId",
-                        column: x => x.BooksBookId,
-                        principalTable: "Books",
-                        principalColumn: "BookId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BookCart",
-                columns: table => new
-                {
-                    BooksBookId = table.Column<int>(type: "int", nullable: false),
-                    CartsCartId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BookCart", x => new { x.BooksBookId, x.CartsCartId });
-                    table.ForeignKey(
-                        name: "FK_BookCart_Books_BooksBookId",
-                        column: x => x.BooksBookId,
-                        principalTable: "Books",
-                        principalColumn: "BookId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -111,8 +88,8 @@ namespace DataAccessLayer.Migrations
                     TotalBooks = table.Column<int>(type: "int", nullable: false),
                     TotalPrice = table.Column<int>(type: "int", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PaymentStatus = table.Column<bool>(type: "bit", nullable: false),
-                    Payment = table.Column<int>(type: "int", nullable: false)
+                    Payment = table.Column<float>(type: "real", nullable: false),
+                    PaymentStatus = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -136,6 +113,7 @@ namespace DataAccessLayer.Migrations
                     UserDob = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserPhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Balance = table.Column<float>(type: "real", nullable: true),
                     OrderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -149,14 +127,11 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookAuthor_BooksBookId",
-                table: "BookAuthor",
+                name: "IX_AuthorBook_BooksBookId",
+                table: "AuthorBook",
                 column: "BooksBookId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_BookCart_CartsCartId",
-                table: "BookCart",
-                column: "CartsCartId");
+  
 
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_UserId",
@@ -167,8 +142,7 @@ namespace DataAccessLayer.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CartId",
                 table: "Orders",
-                column: "CartId",
-                unique: true);
+                column: "CartId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_OrderId",
@@ -176,12 +150,14 @@ namespace DataAccessLayer.Migrations
                 column: "OrderId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_BookCart_Carts_CartsCartId",
-                table: "BookCart",
-                column: "CartsCartId",
-                principalTable: "Carts",
-                principalColumn: "CartId",
+                name: "FK_AuthorBook_Books_BooksBookId",
+                table: "AuthorBook",
+                column: "BooksBookId",
+                principalTable: "Books",
+                principalColumn: "BookId",
                 onDelete: ReferentialAction.Cascade);
+
+          
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Carts_Users_UserId",
@@ -200,10 +176,7 @@ namespace DataAccessLayer.Migrations
                 table: "Orders");
 
             migrationBuilder.DropTable(
-                name: "BookAuthor");
-
-            migrationBuilder.DropTable(
-                name: "BookCart");
+                name: "AuthorBook");
 
             migrationBuilder.DropTable(
                 name: "Authors");

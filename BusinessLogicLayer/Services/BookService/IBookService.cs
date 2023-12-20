@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
 using DataAccessLayer;
 using DataAccessLayer.Models;
-using BusinessLogicLayer.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BusinessLogicLayer.DTOs.BookDTO;
 
 namespace BusinessLogicLayer.Services.BookService
 {
     public interface IBookService
     {
-    Task<BookDTO> GetBookByIdAsync(int bookId);
-    Task<List<BookDTO>> GetAllBooksAsync();
-    Task AddBookAsync(BookDTO bookDTO);
-    Task UpdateBookAsync(BookDTO bookDTO);
+    Task<BookDTODetails> GetBookByIdAsync(int bookId);
+    Task<List<BookDTODetails>> GetAllBooksAsync();
+    Task AddBookAsync(BookDTODetails bookDTO);
+    Task UpdateBookAsync(BookDTODetails bookDTO);
     Task DeleteBookAsync(int bookId);
     }
 }

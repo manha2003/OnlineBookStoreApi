@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BusinessLogicLayer.DTOs.OrderDTO;
 using System.Threading.Tasks;
 
-namespace BusinessLogicLayer.DTOs
+namespace BusinessLogicLayer.DTOs.UserDTO
 {
-    public class UserDTO
+    public class UserDTODetails
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -15,7 +16,11 @@ namespace BusinessLogicLayer.DTOs
         public string? UserAddress { get; set; }
         public string? UserPhoneNumber { get; set; }
 
-      /*  public CartDTO? Cart { get; set; }
-        public OrderDTO? Order { get; set; }*/
+        public float? UserBalance { get; set; }
+
+      /*  public OrderDTODetails? Order { get; set; }*/
+
+        /*  public CartDTO? Cart { get; set; }
+          public OrderDTO? Order { get; set; }*/
     }
 }

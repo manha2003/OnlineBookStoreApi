@@ -2,8 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BusinessLogicLayer.Services.UserService; // Adjust the namespace based on your actual folder structure
-
-using BusinessLogicLayer.DTOs;
+using BusinessLogicLayer.DTOs.UserDTO;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -17,14 +16,14 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
+    public async Task<ActionResult<IEnumerable<UserDTODetails>>> GetUsers()
     {
         var users = await _userService.GetAllUsersAsync();
         return Ok(users);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<UserDTO>> GetUserById(int id)
+    public async Task<ActionResult<UserDTODetails>> GetUserById(int id)
     {
         var user = await _userService.GetUserByIdAsync(id);
 
@@ -37,7 +36,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<UserDTO>> CreateUser([FromBody] UserDTO userDTO)
+    public async Task<ActionResult<UserDTODetails>> CreateUser([FromBody] UserDTODetails userDTO)
     {
         await _userService.AddUserAsync(userDTO);
 
@@ -45,7 +44,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateUser(int id, [FromBody] UserDTO userDTO)
+    public async Task<ActionResult> UpdateUser(int id, [FromBody] UserDTODetails userDTO)
     {
         if (id != userDTO.UserId)
         {

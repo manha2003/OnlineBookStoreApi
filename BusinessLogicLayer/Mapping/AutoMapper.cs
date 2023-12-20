@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
 using DataAccessLayer.Models;
-using BusinessLogicLayer.DTOs;
+using BusinessLogicLayer.DTOs.AuthorDTO;
+using BusinessLogicLayer.DTOs.BookDTO;
+using BusinessLogicLayer.DTOs.CartDTO;
+using BusinessLogicLayer.DTOs.OrderDTO;
+using BusinessLogicLayer.DTOs.UserDTO;
 
 namespace BusinessLogicLayer.Mapping
 {
@@ -8,20 +12,21 @@ namespace BusinessLogicLayer.Mapping
     {
         public AutoMapperProfiles()
         {
-            CreateMap<User, UserDTO>().ReverseMap();
+            CreateMap<User, UserDTODetails>().ReverseMap();
+        
            
                 
 
-            CreateMap<Cart, CartDTO>()
-                .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.Books));
-      
+            CreateMap<Cart, CartDTODetails>().ReverseMap();
+            CreateMap<Cart, CartDTOAdditionalDetails>().ReverseMap()
+                .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
+            .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.Books)); ;
 
-            CreateMap<Order, OrderDTO>();
+            CreateMap<Order, OrderDTODetails>().ReverseMap(); ;
 
-            CreateMap<Book, BookDTO>()
-                .ForMember(dest => dest.Authors, opt => opt.MapFrom(src => src.Authors));
+            CreateMap<Book, BookDTODetails>().ReverseMap();
 
-            CreateMap<Author, AuthorDTO>();
+            CreateMap<Author, AuthorDTODetails>().ReverseMap(); ;
         }
 
     }

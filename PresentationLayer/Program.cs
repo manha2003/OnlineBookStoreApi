@@ -29,9 +29,9 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBookService, BookService>();
-/*builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IAuthorService, AuthorService>();*/
+//builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

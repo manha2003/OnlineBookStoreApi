@@ -1,19 +1,19 @@
 ﻿using AutoMapper;
 using DataAccessLayer;
 using DataAccessLayer.Models;
-using BusinessLogicLayer.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BusinessLogicLayer.DTOs.UserDTO;
 
 namespace BusinessLogicLayer.Services.UserService
 {
     public interface IUserService
     {
-        Task<UserDTO> GetUserByIdAsync(int userId);
-        Task<List<UserDTO>> GetAllUsersAsync();
-        Task AddUserAsync(UserDTO userDTO);
-        Task UpdateUserAsync(UserDTO userDTO);
+        Task<UserDTODetails> GetUserByIdAsync(int userId);
+        Task<List<UserDTODetails>> GetAllUsersAsync();
+        Task AddUserAsync(UserDTODetails userDTO);
+        Task UpdateUserAsync(UserDTODetails userDTO);
         Task DeleteUserAsync(int userId);
     }
 }
