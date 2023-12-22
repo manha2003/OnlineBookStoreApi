@@ -13,7 +13,6 @@ namespace BusinessLogicLayer.Services.UserService
     public class UserService: IUserService
     {
         private readonly IRepository<User> _userRepository;
-        private readonly UserValidator _userValidator;
         private readonly IMapper _mapper;
 
         public UserService(IRepository<User> userRepository, IMapper mapper)
@@ -56,5 +55,22 @@ namespace BusinessLogicLayer.Services.UserService
         {
             await _userRepository.DeleteAsync(userId);
         }
+
+        public async Task<bool> IsPhoneNumberUniqueAsync(string phoneNumber)
+        {
+            return !(await _userRepository.GetAllAsync()).Any(u => u.UserPhoneNumber == phoneNumber);
+        }
+
+        public async Task<bool> IsAddressUniqueAsync(string address)
+        {
+            return !(await _userRepository.GetAllAsync()).Any(u => u.UserAddress == address);
+        }
+
+        public async Task<bool> IsEmailUniqueAsync(string email)
+        {
+
+            return !(await _userRepository.GetAllAsync()).Any(u => u.UserEmail == email);
+        }
+
     }
 }

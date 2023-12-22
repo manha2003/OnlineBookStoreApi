@@ -69,5 +69,16 @@ namespace DataAccessLayer.Repository
                 await _context.SaveChangesAsync();
             }
         }
+
+     
+        public bool GetBookByTitle( string  title )
+        {
+            return !_context.Set<Book>().Any( book => book.Title == title );
+        }
+
+        Book IRepository<T>.GetBookByTitle(string title)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

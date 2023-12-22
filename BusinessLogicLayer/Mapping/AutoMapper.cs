@@ -18,13 +18,11 @@ namespace BusinessLogicLayer.Mapping
                 
 
             CreateMap<Cart, CartDTODetails>().ReverseMap();
-            CreateMap<Cart, CartDTOAdditionalDetails>().ReverseMap()
-                .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
-            .ForMember(dest => dest.Books, opt => opt.MapFrom(src => src.Books)); ;
-
             CreateMap<Order, OrderDTODetails>().ReverseMap(); ;
 
-            CreateMap<Book, BookDTODetails>().ReverseMap();
+            CreateMap<Book, BookDTODetails>()
+                .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.Authors.First().AuthorId))
+                .ReverseMap();
 
             CreateMap<Author, AuthorDTODetails>().ReverseMap(); ;
         }

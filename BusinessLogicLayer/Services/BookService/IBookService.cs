@@ -15,5 +15,6 @@ namespace BusinessLogicLayer.Services.BookService
     Task AddBookAsync(BookDTODetails bookDTO);
     Task UpdateBookAsync(BookDTODetails bookDTO);
     Task DeleteBookAsync(int bookId);
+    Task<bool> IsBookTitleUnique(string title);
     }
 }

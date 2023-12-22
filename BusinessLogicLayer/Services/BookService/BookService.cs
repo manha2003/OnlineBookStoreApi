@@ -54,5 +54,11 @@ namespace BusinessLogicLayer.Services.BookService
         {
             await _bookRepository.DeleteAsync(bookId);
         }
+
+        public async Task<bool> IsBookTitleUnique( string title )
+        {
+            var existingBook =_bookRepository.GetBookByTitle( title );
+            return existingBook == null;
+        }
     }
 }

@@ -6,7 +6,7 @@ using BusinessLogicLayer.DTOs.UserDTO;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UserController : ControllerBase
+public class    UserController : ControllerBase
 {
     private readonly IUserService _userService;
 
@@ -46,14 +46,34 @@ public class UserController : ControllerBase
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateUser(int id, [FromBody] UserDTODetails userDTO)
     {
-        if (id != userDTO.UserId)
+        //if (id != userDTO.UserId)
+        //{
+        //    return BadRequest();
+        //}
+
+        //await _userService.UpdateUserAsync(userDTO);
+
+        //return NoContent();
+
+        var isUnique = await _userService.IsPhoneNumberUniqueAsync(userDTO.UserPhoneNumber)
+           && await _userService.IsAddressUniqueAsync(userDTO.UserAddress)
+           && await _userService.IsEmailUniqueAsync(userDTO.UserEmail);
+
+
+        if (isUnique)
         {
-            return BadRequest();
+            await _userService.AddUserAsync(userDTO);
+            return CreatedAtAction(nameof(GetUserById), new { id = userDTO.UserId }, userDTO);
         }
 
-        await _userService.UpdateUserAsync(userDTO);
-
-        return NoContent();
+        ModelState.AddModelError(!await _userService.IsPhoneNumberUniqueAsync(userDTO.UserPhoneNumber) ? "UserPhoneNumber" :
+                                !await _userService.IsAddressUniqueAsync(userDTO.UserAddress) ? "Address" :
+                                "UserEmail",
+                                !await _userService.IsPhoneNumberUniqueAsync(userDTO.UserPhoneNumber) ? "This Phone number has been taken." :
+                                !await _userService.IsAddressUniqueAsync(userDTO.UserAddress) ? "Address must be unique." :
+                                "This Email has been taken.");
+        // Bad Request = 400
+        return BadRequest(ModelState);
     }
 
     [HttpDelete("{id}")]
