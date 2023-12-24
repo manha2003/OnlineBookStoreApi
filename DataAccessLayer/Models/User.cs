@@ -16,6 +16,12 @@ namespace DataAccessLayer.Models
         public string UserPhoneNumber { get; set; }
 
         public Cart? Cart { get; set; }
+<<<<<<< Updated upstream
         public Order? Order { get; set; }
+=======
+
+
+
+>>>>>>> Stashed changes
     }
 }

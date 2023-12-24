@@ -15,6 +15,7 @@ namespace DataAccessLayer.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Cart> Carts { get; set; }
+     
         public DbSet<Order> Orders { get; set; }
 
         public OnlineBookStoreDbContext(DbContextOptions<OnlineBookStoreDbContext> options) : base(options)

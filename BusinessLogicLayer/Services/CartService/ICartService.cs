@@ -10,5 +10,13 @@ namespace BusinessLogicLayer.Services.CartService
 {
     public interface ICartService
     {
+<<<<<<< Updated upstream
+=======
+        Task<CartDTOAdditionalDetails> GetCartByIdAsync(int cartId);
+        Task<List<CartDTODetails>> GetAllCartsAsync();
+        Task AddCartAsync(CartDTODetails cartDTO);
+        Task UpdateCartAsync(UpdateCartDTO cartDTO);
+        Task DeleteCartAsync(int cartId);
+>>>>>>> Stashed changes
     }
 }

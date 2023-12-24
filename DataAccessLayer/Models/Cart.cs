@@ -11,13 +11,17 @@ namespace DataAccessLayer.Models
     {
         public int CartId { get; set; }
         public int UserId { get; set; }
-        public int BookId { get; set; }
-        public int TotalBooks { get; set; }
-        public int TotalPrice { get; set; }
-
+      
         // Navigation properties
+        public int Quantity {  get; set; }
         public User User { get; set; }
+<<<<<<< Updated upstream
         public Order? Order { get; set; }
         public ICollection<Book?> Books { get; set; }
+=======
+
+        public List<Book> Books { get; set; }
+
+>>>>>>> Stashed changes
     }
 }

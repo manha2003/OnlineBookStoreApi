@@ -19,11 +19,15 @@ namespace DataAccessLayer.Models
         {
             public int BookId { get; set; }
             public string Title { get; set; }
-            public DateTime PublicationDate { get; set; }
             public int AuthorId { get; set; }
             public float Price { get; set; }
+<<<<<<< Updated upstream
             public int Stock { get; set; }
             public BookGenre Genre { get; set; }
+=======
+           
+            public string Genre { get; set; }
+>>>>>>> Stashed changes
 
         // Navigation property
             public ICollection<Cart> Carts { get; set; } // Navigation property for N:1 relationship
