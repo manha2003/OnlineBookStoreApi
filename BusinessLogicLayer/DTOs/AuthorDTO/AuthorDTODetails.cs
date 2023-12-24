@@ -6,6 +6,7 @@ using BusinessLogicLayer.DTOs.BookDTO;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BusinessLogicLayer.Validator;
 
 namespace BusinessLogicLayer.DTOs.AuthorDTO
 {
@@ -14,9 +15,9 @@ namespace BusinessLogicLayer.DTOs.AuthorDTO
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AuthorId { get; set; }
-        [Required]
+        [AuthorValidatorAttribute.AuthorName]
         public string AuthorName { get; set; }
-        [Required]
+        [AuthorValidatorAttribute.AuthorDoB]
         public DateTime AuthorDob { get; set; }
         
        /* public List<AuthorDTODetails> AuthorDetails { get; set; }*/

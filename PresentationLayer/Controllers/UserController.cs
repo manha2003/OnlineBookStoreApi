@@ -29,7 +29,7 @@ public class    UserController : ControllerBase
 
         if (user == null)
         {
-            return NotFound();
+            return StatusCode(204);
         }
 
         return Ok(user);
@@ -73,7 +73,7 @@ public class    UserController : ControllerBase
                                 !await _userService.IsAddressUniqueAsync(userDTO.UserAddress) ? "Address must be unique." :
                                 "This Email has been taken.");
         // Bad Request = 400
-        return BadRequest(ModelState);
+        return StatusCode(400);
     }
 
     [HttpDelete("{id}")]
@@ -83,11 +83,11 @@ public class    UserController : ControllerBase
 
         if (existingUser == null)
         {
-            return NotFound();
+            return StatusCode(404);
         }
 
         await _userService.DeleteUserAsync(id);
 
-        return NoContent();
+        return StatusCode(204);
     }
 }

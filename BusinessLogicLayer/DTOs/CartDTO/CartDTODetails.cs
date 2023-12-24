@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using BusinessLogicLayer.DTOs.UserDTO;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BusinessLogicLayer.Validator;
 
 namespace BusinessLogicLayer.DTOs.CartDTO
 {
@@ -17,10 +18,13 @@ namespace BusinessLogicLayer.DTOs.CartDTO
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CartId { get; set; }
 
-     
+        [ForeignKey("UserDTODetails")]
         public int UserId { get; set; }
+        [ForeignKey("BookDTODetails")]
         public int BookId { get; set; }
+        [CartValidatorAttribute.TotalBooksValidation]
         public int TotalBooks { get; set; }
+        [CartValidatorAttribute.TotalPriceValidation]
         public int TotalPrice { get; set; }
 
        /* public UserDTODetails? User { get; set; }

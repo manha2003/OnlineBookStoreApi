@@ -30,7 +30,7 @@ namespace PresentationLayer.Controllers
 
             if (cart == null)
             {
-                return NotFound();
+                return NotFound("There is no Cart with {id}");
             }
 
             // Populate UserId in the DTO based on the associated user
@@ -52,7 +52,7 @@ namespace PresentationLayer.Controllers
         {
             
                 await _cartService.AddCartAsync(cartDTO);
-                return Ok();
+                return Ok("Cart Created successfully");
            
         }
 
@@ -61,18 +61,18 @@ namespace PresentationLayer.Controllers
         {
             if (id != cartDTO.CartId)
             {
-                return BadRequest();
+                return BadRequest("There is no Cart with {id}");
             }
 
             await _cartService.UpdateCartAsync(cartDTO);
-            return Ok();
+            return Ok("Cart Update Successfully");
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCart(int id)
         {
             await _cartService.DeleteCartAsync(id);
-            return Ok();
+            return Ok("Cart Deleted");
         }
     }
 }

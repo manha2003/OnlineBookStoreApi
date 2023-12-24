@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BusinessLogicLayer.Services.BookService;
 using BusinessLogicLayer.DTOs.BookDTO;
 using Microsoft.AspNetCore.Mvc;
+using PresentationLayer.Filter;
 
 namespace PresentationLayer.Controllers
 {
@@ -24,24 +25,25 @@ namespace PresentationLayer.Controllers
 
             if (book == null)
             {
-                return NotFound();
+                return NotFound("Book can not be found");
             }
 
-            return Ok(book);
+            return StatusCode(200);
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<BookDTODetails>>> GetAllBooks()
+        public async Task<ActionResult<List<BookDTODetails>>> GetAllBooks([FromQuery] BookFilter filter)
         {
-            var books = await _bookService.GetAllBooksAsync();
-            return Ok(books);
+            var allBooks = await _bookService.GetAllBooksAsync();
+            var filteredBooks = filter.ApplyFilter(allBooks);
+            return Ok(filteredBooks);
         }
 
         [HttpPost]
         public async Task<ActionResult> AddBook([FromBody] BookDTODetails bookDTO)
         {
             await _bookService.AddBookAsync(bookDTO);
-            return Ok();
+            return Ok("Book added successfully");
         }
 
         [HttpPut("{id}")]
@@ -49,18 +51,18 @@ namespace PresentationLayer.Controllers
         {
             if (id != bookDTO.BookId)
             {
-                return BadRequest();
+                return BadRequest("There is no Book with {id}");
             }
 
             await _bookService.UpdateBookAsync(bookDTO);
-            return Ok();
+            return Ok("Book Updated");
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteBook(int id)
         {
             await _bookService.DeleteBookAsync(id);
-            return Ok();
+            return Ok("Book Deleted");
         }
     }
 }

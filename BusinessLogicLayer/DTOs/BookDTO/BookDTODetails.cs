@@ -19,7 +19,7 @@ namespace BusinessLogicLayer.DTOs.BookDTO
         [Required]
         [BookValidatorAttribute.BookTitle]
         public string Title { get; set; }
-        [Required]
+        [ForeignKey("AuthorDTODetails")]
         public string AuthorId { get; set; }
         [BookValidatorAttribute.DateFormat]
         public DateTime PublicationDate { get; set; }
