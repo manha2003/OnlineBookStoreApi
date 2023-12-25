@@ -12,3 +12,4 @@ D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\refint\DataAccessLayer.dl
 D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.pdb
 D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.genruntimeconfig.cache
 D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\ref\DataAccessLayer.dll
+D:\OnlineBookStoreApi\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.sourcelink.json

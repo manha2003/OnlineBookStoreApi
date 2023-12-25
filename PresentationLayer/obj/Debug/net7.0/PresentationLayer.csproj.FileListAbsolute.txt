@@ -80,3 +80,4 @@ D:\OnlineBookStoreApi\PresentationLayer\bin\Debug\net7.0\BusinessLogicLayer.pdb
 D:\OnlineBookStoreApi\PresentationLayer\bin\Debug\net7.0\DataAccessLayer.pdb
 D:\OnlineBookStoreApi\PresentationLayer\bin\Debug\net7.0\AutoMapper.dll
 D:\OnlineBookStoreApi\PresentationLayer\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\OnlineBookStoreApi\PresentationLayer\obj\Debug\net7.0\PresentationLayer.sourcelink.json

@@ -34,22 +34,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("BooksBookId");
 
-                    b.ToTable("BookAuthor", (string)null);
-                });
-
-            modelBuilder.Entity("BookCart", b =>
-                {
-                    b.Property<int>("BooksBookId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CartsCartId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BooksBookId", "CartsCartId");
-
-                    b.HasIndex("CartsCartId");
-
-                    b.ToTable("BookCart");
+                    b.ToTable("AuthorBook");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.Author", b =>
@@ -83,8 +68,12 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Genre")
+                    b.Property<int?>("CartId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
@@ -92,14 +81,13 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("PublicationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Stock")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookId");
+
+                    b.HasIndex("CartId");
 
                     b.ToTable("Books");
                 });
@@ -112,13 +100,7 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"));
 
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalBooks")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalPrice")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -146,22 +128,16 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Payment")
-                        .HasColumnType("int");
+                    b.Property<float>("Payment")
+                        .HasColumnType("real");
 
-                    b.Property<bool>("PaymentStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("TotalBooks")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
+                    b.Property<string>("PaymentStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderId");
 
-                    b.HasIndex("CartId")
-                        .IsUnique();
+                    b.HasIndex("CartId");
 
                     b.ToTable("Orders");
                 });
@@ -174,12 +150,12 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UserAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("UserBalance")
+                        .HasColumnType("real");
 
                     b.Property<DateTime>("UserDob")
                         .HasColumnType("datetime2");
@@ -197,8 +173,6 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("Users");
                 });
@@ -218,19 +192,11 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("BookCart", b =>
+            modelBuilder.Entity("DataAccessLayer.Models.Book", b =>
                 {
-                    b.HasOne("DataAccessLayer.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksBookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("DataAccessLayer.Models.Cart", null)
-                        .WithMany()
-                        .HasForeignKey("CartsCartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Books")
+                        .HasForeignKey("CartId");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.Cart", b =>
@@ -247,26 +213,17 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("DataAccessLayer.Models.Order", b =>
                 {
                     b.HasOne("DataAccessLayer.Models.Cart", "Cart")
-                        .WithOne("Order")
-                        .HasForeignKey("DataAccessLayer.Models.Order", "CartId")
+                        .WithMany()
+                        .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cart");
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Models.User", b =>
-                {
-                    b.HasOne("DataAccessLayer.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId");
-
-                    b.Navigation("Order");
-                });
-
             modelBuilder.Entity("DataAccessLayer.Models.Cart", b =>
                 {
-                    b.Navigation("Order");
+                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Models.User", b =>

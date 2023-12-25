@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using DataAccessLayer;
 using DataAccessLayer.Models;
-using BusinessLogicLayer.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DataAccessLayer.IRepository;
+using DataAccessLayer.Repository;
+using BusinessLogicLayer.DTOs.BookDTO;
 
 namespace BusinessLogicLayer.Services.BookService
 {
@@ -21,25 +21,25 @@ namespace BusinessLogicLayer.Services.BookService
             _mapper = mapper;
         }
 
-        public async Task<BookDTO> GetBookByIdAsync(int bookId)
+        public async Task<BookDTODetails> GetBookByIdAsync(int bookId)
         {
             var bookEntity = await _bookRepository.GetByIdAsync(bookId);
-            return _mapper.Map<BookDTO>(bookEntity);
+            return _mapper.Map<BookDTODetails>(bookEntity);
         }
 
-        public async Task<List<BookDTO>> GetAllBooksAsync()
+        public async Task<List<BookDTODetails>> GetAllBooksAsync()
         {
             var bookEntities = await _bookRepository.GetAllAsync();
-            return _mapper.Map<List<BookDTO>>(bookEntities);
+            return _mapper.Map<List<BookDTODetails>>(bookEntities);
         }
 
-        public async Task AddBookAsync(BookDTO bookDTO)
+        public async Task AddBookAsync(BookDTODetails bookDTO)
         {
             var bookEntity = _mapper.Map<Book>(bookDTO);
             await _bookRepository.AddAsync(bookEntity);
         }
 
-        public async Task UpdateBookAsync(BookDTO bookDTO)
+        public async Task UpdateBookAsync(BookDTODetails bookDTO)
         {
             var existingBookEntity = await _bookRepository.GetByIdAsync(bookDTO.BookId);
 

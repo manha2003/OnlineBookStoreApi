@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OnlineBookStoreApi\\PresentationLayer\\PresentationLayer.csproj": {}
+    "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\PresentationLayer\\PresentationLayer.csproj": {}
   },
   "projects": {
-    "D:\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+    "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "projectUniqueName": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
         "projectName": "BusinessLogicLayer",
-        "projectPath": "D:\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
-        "packagesPath": "C:\\Users\\pv\\.nuget\\packages\\",
-        "outputPath": "D:\\OnlineBookStoreApi\\BusinessLogicLayer\\obj\\",
+        "projectPath": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "packagesPath": "C:\\Users\\quant\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\BusinessLogicLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\quant\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "D:\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
@@ -93,17 +98,21 @@
         }
       }
     },
-    "D:\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "D:\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\pv\\.nuget\\packages\\",
-        "outputPath": "D:\\OnlineBookStoreApi\\DataAccessLayer\\obj\\",
+        "projectPath": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\quant\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\quant\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -111,6 +120,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -178,17 +188,21 @@
         }
       }
     },
-    "D:\\OnlineBookStoreApi\\PresentationLayer\\PresentationLayer.csproj": {
+    "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\PresentationLayer\\PresentationLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OnlineBookStoreApi\\PresentationLayer\\PresentationLayer.csproj",
+        "projectUniqueName": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\PresentationLayer\\PresentationLayer.csproj",
         "projectName": "PresentationLayer",
-        "projectPath": "D:\\OnlineBookStoreApi\\PresentationLayer\\PresentationLayer.csproj",
-        "packagesPath": "C:\\Users\\pv\\.nuget\\packages\\",
-        "outputPath": "D:\\OnlineBookStoreApi\\PresentationLayer\\obj\\",
+        "projectPath": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\PresentationLayer\\PresentationLayer.csproj",
+        "packagesPath": "C:\\Users\\quant\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\PresentationLayer\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\quant\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -196,17 +210,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
-                "projectPath": "D:\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
+              "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+                "projectPath": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\BusinessLogicLayer\\BusinessLogicLayer.csproj"
               },
-              "D:\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "D:\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\quant\\Documents\\Zalo Received Files\\OnlineBookStoreApi (3)\\OnlineBookStoreApi\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }

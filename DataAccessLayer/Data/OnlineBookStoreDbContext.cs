@@ -25,33 +25,6 @@ namespace DataAccessLayer.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<User>()
-            .HasOne(u => u.Cart)
-            .WithOne(c => c.User)
-            .HasForeignKey<Cart>(c => c.UserId);
-
-            // Cart and Order (1:1 relationship)
-            modelBuilder.Entity<Cart>()
-                .HasOne(c => c.Order)
-                .WithOne(o => o.Cart)
-                .HasForeignKey<Order>(o => o.CartId);
-
-            // User and Order (1:N relationship)
-
-
-
-            // Cart and Book (1:N relationship)
-            modelBuilder.Entity<Cart>()
-                .HasMany(c => c.Books)
-                .WithMany(b => b.Carts);
-                
-            
-
-            // Book and Author (N:M relationship)
-            modelBuilder.Entity<Book>()
-                .HasMany(b => b.Authors)
-                .WithMany(a => a.Books)
-                .UsingEntity(j => j.ToTable("BookAuthor"));
 
 
             base.OnModelCreating(modelBuilder);

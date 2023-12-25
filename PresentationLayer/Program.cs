@@ -14,7 +14,9 @@ using BusinessLogicLayer.Services.BookService;
 using BusinessLogicLayer.Services.CartService;
 using BusinessLogicLayer.Services.OrderService;
 using BusinessLogicLayer.Services.UserService;
-using DataAccessLayer.IRepository;
+using DataAccessLayer.Repository;
+using Microsoft.Extensions.Options;
+using System;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,20 +29,28 @@ builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
 // Add repositories and services
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBookService, BookService>();
-/*builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IAuthorService, AuthorService>();*/
+/*builder.Services.AddScoped<IAuthorService, AuthorService>();*/
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddSwaggerGen();
 
 
-builder.Services.AddDbContext<OnlineBookStoreDbContext>(options =>
- options.UseSqlServer(builder.Configuration.GetConnectionString("OnlineBookStoreConnectionString")));
 
+
+
+builder.Services.AddDbContext<OnlineBookStoreDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("OnlineBookStoreConnectionString"));
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+});
 
 
 
