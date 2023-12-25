@@ -14,8 +14,7 @@ namespace BusinessLogicLayer.DTOs.CartDTO
 {
     public class CartDTODetails
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int CartId { get; set; }
 
         [ForeignKey("UserDTODetails")]

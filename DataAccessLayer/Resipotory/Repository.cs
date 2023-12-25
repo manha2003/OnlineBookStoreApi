@@ -48,6 +48,20 @@ namespace DataAccessLayer.Repository
 
             public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
 
+        public async Task<IEnumerable<T>> GetPageAsync(int pageNumber, int pageSize)
+        {
+            var query = _context.Set<T>().AsQueryable();
+
+            // Calculate the number of items to skip
+            var itemsToSkip = (pageNumber - 1) * pageSize;
+
+            // Apply paging to the query
+            var pagedItems = await query.Skip(itemsToSkip).Take(pageSize).ToListAsync();
+
+            return pagedItems;
+        }
+
+
         public async Task AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
@@ -70,15 +84,5 @@ namespace DataAccessLayer.Repository
             }
         }
 
-     
-        public bool GetBookByTitle( string  title )
-        {
-            return !_context.Set<Book>().Any( book => book.Title == title );
-        }
-
-        Book IRepository<T>.GetBookByTitle(string title)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

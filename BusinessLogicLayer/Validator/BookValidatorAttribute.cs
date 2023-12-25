@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,12 @@ namespace BusinessLogicLayer.Validator
 
             public override bool IsValid(object value)
             {
-                if ( value is DateTime datetime)
+                if (value is string dateString)
                 {
-                    return datetime <= DateTime.Now.Date;
+                    if (DateTime.TryParseExact(dateString, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+                    {
+                        return true;
+                    }
                 }
                 return false;
             }
@@ -68,7 +72,17 @@ namespace BusinessLogicLayer.Validator
 
         public class BookPriceAttribute : ValidationAttribute
         {
+            protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+            {
+                decimal price = (decimal)value;
 
+                if (price <= 0)
+                {
+                    return new ValidationResult("Price must be a positive value.");
+                }
+
+                return ValidationResult.Success;
+            }
         }
 
         public class BookGenreAttribute : ValidationAttribute

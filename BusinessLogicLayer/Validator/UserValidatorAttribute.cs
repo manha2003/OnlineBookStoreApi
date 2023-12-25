@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using DataAccessLayer.Repository;
 using DataAccessLayer.IRepository;
 using DataAccessLayer.Models;
+using System.Globalization;
 
 namespace BusinessLogicLayer.Validator
 {
@@ -76,10 +77,12 @@ namespace BusinessLogicLayer.Validator
 
             public override bool IsValid(object value)
             {
-                if (value is DateTime dateTime)
+                if (value is string dateString)
                 {
-                    dateTime = dateTime.Date;
-                    return dateTime <= DateTime.Now.Date;
+                    if (DateTime.TryParseExact(dateString, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+                    {
+                        return true;
+                    }
                 }
 
                 return false;

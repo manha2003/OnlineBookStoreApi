@@ -16,8 +16,6 @@ namespace BusinessLogicLayer.DTOs.UserDTO
     public class UserDTODetails
     {
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
 
         [UserValidatorAttribute.Username]
@@ -26,7 +24,7 @@ namespace BusinessLogicLayer.DTOs.UserDTO
         public string UserEmail { get; set; }
 
         [UserValidatorAttribute.DateFormat]
-        public DateTime UserDob { get; set; }
+        public string UserDob { get; set; }
 
         [Required]
         public string? UserAddress { get; set; }

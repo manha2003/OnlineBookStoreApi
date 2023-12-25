@@ -11,12 +11,11 @@ namespace BusinessLogicLayer.DTOs.OrderDTO
 {
     public class OrderDTODetails
     {
-        [Key]
+
         public int OrderId { get; set; }
-        [ForeignKey("CartDTODetails")]
-        public int CartId { get; set; } // FK
+        public int CartId { get; set; } 
         [OrderValidatorAttribute.TotalBookCheck]
-        public int TotalBooks { get; set; } // !<0
+        public int TotalBooks { get; set; }
 
         [OrderValidatorAttribute.DateFormat]
         public DateTime OrderDate { get; set; }

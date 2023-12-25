@@ -12,9 +12,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace BusinessLogicLayer.DTOs.CartDTO
 {
     public class CartDTOAdditionalDetails
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int CartId { get; set; }
 
         [ForeignKey("UserDTODetails")]

@@ -12,8 +12,7 @@ namespace BusinessLogicLayer.DTOs.AuthorDTO
 {
     public class AuthorDTODetails
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int AuthorId { get; set; }
         [AuthorValidatorAttribute.AuthorName]
         public string AuthorName { get; set; }

@@ -66,13 +66,26 @@ namespace BusinessLogicLayer.Validator
 
         public class PaymentStatusValidationAttribute : ValidationAttribute
         {
+            public string PaymentPropertyName { get; set; }
+
             protected override ValidationResult IsValid(object value, ValidationContext validationContext)
             {
                 string paymentStatus = (string)value;
 
-                if (paymentStatus != "Pending" && paymentStatus != "Completed")
+                var paymentProperty = validationContext.ObjectType.GetProperty(PaymentPropertyName);
+                if (paymentProperty != null)
                 {
-                    return new ValidationResult("Invalid payment status.");
+                    float payment = (float)paymentProperty.GetValue(validationContext.ObjectInstance);
+
+                    if (payment <= 0 && paymentStatus != "Unpaid")
+                    {
+                        return new ValidationResult("Invalid payment status. Payment must be 0 for 'Unpaid'.");
+                    }
+
+                    if (payment > 0 && paymentStatus != "Paid")
+                    {
+                        return new ValidationResult("Invalid payment status. Payment must be greater than 0 for 'Paid'.");
+                    }
                 }
 
                 return ValidationResult.Success;

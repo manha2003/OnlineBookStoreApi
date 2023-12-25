@@ -13,8 +13,7 @@ namespace BusinessLogicLayer.DTOs.BookDTO
 {
     public class BookDTODetails
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         public int BookId { get; set; }
         [Required]
         [BookValidatorAttribute.BookTitle]
@@ -22,7 +21,7 @@ namespace BusinessLogicLayer.DTOs.BookDTO
         [ForeignKey("AuthorDTODetails")]
         public string AuthorId { get; set; }
         [BookValidatorAttribute.DateFormat]
-        public DateTime PublicationDate { get; set; }
+        public string PublicationDate { get; set; }
         [Required]
         [BookValidatorAttribute.BookPrice]
         public float Price { get; set; }
